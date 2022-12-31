@@ -1,2 +1,299 @@
 @import 'reset_new.scss'; 
 @import 'fonts.scss';
+
+// Variables============================================================
+
+// colors
+$black: #232536;
+$yellow: #FFD050;
+$gray-dark: #4C4C4C;
+$gray-medium: #6D6E76;
+$purple: #592EA9;
+$light: #FFFFFF;
+$light-yellow: #FBF6EA;
+$light-grey: #F4F4F4;
+$lavender: #F4F0F8;
+
+// Fonts
+
+$sen:'Sen', sans-serif;
+$inter:'Inter', sans-serif;
+
+// GLOBAL STYLES======================================================
+
+body{
+	font-family: 'Inter', sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 28px;
+}
+
+// text-styles
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Sen' ,sans-serif;
+	font-weight: 700;
+}
+
+h1{
+	font-family: $sen;
+	font-style: normal;
+	font-weight: 700;
+	font-size: clamp(32px, 3.3vw, 48px);
+	line-height: clamp(40px, 4.4vw, 64px);
+	letter-spacing: -2px;
+}
+h2{
+	font-family: $sen;
+	font-style: normal;
+	font-weight: 700;
+	font-size: clamp(24px, 2.5vw, 36px);
+	line-height: clamp(32px, 3.3vw, 48px);
+	letter-spacing: -2px;
+}
+h3{
+	font-family: $sen;
+	font-style: normal;
+	font-weight: 700;
+	font-size: clamp(19px, 2vw, 28px);
+	line-height: clamp(27px, 3vw, 40px);
+	letter-spacing: -1px;
+}
+h4{
+	font-family: $sen;
+	font-style: normal;
+	font-weight: 700;
+	font-size: clamp(16px,1.6vw, 24px);
+	line-height: clamp(21px, 2.2vw, 32px);
+}
+h5{
+	font-family: $sen;
+	font-style: normal;
+	font-weight: 700;
+	font-size: clamp(15px, 1.4vw, 20px);
+	line-height: clamp(21px, 2.2vw, 32px);
+}
+h6{
+	font-family: $sen;
+	font-style: normal;
+	font-weight: 700;
+	font-size: 16px;
+	line-height: 24px;
+}
+// разметка
+.wrapper{
+
+}
+
+.container{
+	max-width: 1280px;
+	height: 100%;
+	margin: 0 auto;
+}
+
+.button{
+	font-family: $sen;
+	font-weight: 700;
+	font-size: 18px;
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	background-color: $yellow;
+	padding: 16px 48px;
+	a{
+		color: $black;
+	}
+}
+
+// HEADER ===============================================================
+
+.header{
+	background-color: $black;
+	min-height: 80px;
+	width: 100%;
+	transition: all 1s ease;
+	&__container{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 80px;
+		transition: all 1s ease;
+	}
+	&__list{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+	&__item{
+		&:not(:last-child){
+			padding-right: clamp(10px ,2vw, 24px);
+		}
+	}
+	&__link{
+		color: #fff;
+		text-decoration: none;
+	}
+	&__button{
+		background-color: #fff;
+		transition: all 0.3s ease;
+		&:hover{
+			background-color: rgba(255, 255, 255, 0.8);
+		}
+	}
+	&__burger-button{
+		display: none;
+	}
+}
+
+@media (max-width: 1300px) {
+	.header{
+		&__container{
+			justify-content: space-around;
+		}
+	}
+}
+@media (max-width: 745px) {
+	.header{
+		&__burger-button{
+			display: block;
+			height: 25px;
+			width: 35px;
+			position: relative;
+			transition: all 0.3s ease;
+			&:hover{
+				cursor: pointer
+			}
+			span{
+				position: absolute;
+				width: 100%;
+				transition: all 0.3s ease;
+				height: 2px;
+				top: 50%;
+				left: 0;
+				background-color: #fff;
+			}
+			&::before, &::after{
+				content: '';
+				width: 100%;
+				height: 2px;
+				display: block;
+				background-color: #fff;
+				position: absolute;
+				transition: all 0.3s ease;
+			}
+			&::before{
+				top: 0;
+				left: 0;
+			}
+			&::after{
+				bottom: 0;
+				left: 0;
+			}
+			&._active{
+				animation: rotate 10s infinite  linear;
+				span{
+					
+					
+				}
+				&::before{
+					transform: rotate(90deg);
+					top: 50%;
+					// height: 3px;
+					
+				}
+				&::after{
+					transform: scale(0);
+				}
+			}
+		}
+		&__list{
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			font-size: 32px;
+			background-color: $black;
+			transition: 0.3s ease;
+			gap: 0;
+			top: 80px;
+			position: fixed;
+			width: 100%;
+			height: 400px;
+			left: -100%;
+		}
+		&__button{
+			padding: 16px 144px;
+		}
+		&__logo{
+			// position: absolute;
+			// left: 55px;
+			// top: 25px;
+		}
+		&__container{
+			justify-content: space-between;
+			padding: 0 40px;
+		}
+		&._active{
+			// height: 100vh;
+			.header__list{
+				left: 0;
+			}
+
+		}
+	}
+	@keyframes rotate {
+		0%{
+			transform: rotate(0turn);
+		}
+		100%{
+			transform: rotate(1turn);
+		}
+	}
+}
+// MAIN ====================================================
+.main{
+	background: url('../src/main-bg.jpg');
+	background-size: auto;
+	width: 100%;
+	min-height: 720px;
+	position: relative;
+	color: #fff;
+	&__overlay{
+		width: 100%;
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		left: 0;
+		min-height: 720px;
+		background: radial-gradient(30.56% 76.04% at 74.58% 0%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 100%) 
+	}
+	&__text{
+		max-width: 804px;
+		z-index: 2;
+		position: relative;
+		padding-top: 128px;
+	}
+	&__container{
+
+	}
+	&__display{
+		font-size: clamp(37px, 3.88vw, 56px);
+		line-height: clamp(42px, 4.4vw, 64px);
+		padding-bottom: 24px;
+	}
+	&__posted{
+		text-transform: uppercase;
+		font-weight: 500;
+		padding-bottom: 24px;
+		span{
+			font-weight: 600;
+		}
+	}
+	&__author{
+		padding-bottom: 24px;
+		span{
+			color: $yellow;
+		}
+	}
+	& > {
+		padding-bottom: 24px;
+	}
+}
