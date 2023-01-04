@@ -104,6 +104,17 @@ h6{
 	}
 }
 
+.par{
+	color: $gray-medium;
+}
+.cap-one{
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 20px;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	color: $black;
+}
 // HEADER ===============================================================
 
 .header{
@@ -111,6 +122,11 @@ h6{
 	min-height: 80px;
 	width: 100%;
 	transition: all 1s ease;
+	&__block{
+		width: 100%;
+		height: 80px;
+		display: none;
+	}
 	&__container{
 		display: flex;
 		align-items: center;
@@ -232,9 +248,19 @@ h6{
 			padding: 0 40px;
 		}
 		&._active{
-			// height: 100vh;
+			.header__block{
+				display: block;
+				z-index: 1;
+			}
 			.header__list{
 				left: 0;
+				z-index: 10;
+			}
+			.header__container{
+				position: fixed;
+				z-index: 10;
+				background-color: $black;
+				width: 100%;
 			}
 
 		}
@@ -251,7 +277,8 @@ h6{
 // MAIN ====================================================
 .main{
 	background: url('../src/main-bg.jpg');
-	background-size: auto;
+	background-position: center;
+	background-size: cover;
 	width: 100%;
 	min-height: 720px;
 	position: relative;
@@ -293,7 +320,183 @@ h6{
 			color: $yellow;
 		}
 	}
-	& > {
+	&__par{
 		padding-bottom: 24px;
+	}
+}
+@media (max-width: 1365px) {
+	.main{
+		&__container{
+			padding: 0 35px
+		}
+	}
+	
+}
+// POST ============================================================================
+.post{
+	margin-top: 128px;
+	&__titles{
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	&__featured{
+		max-width: 50%;
+		border: 1px solid rgba(109, 110, 118, 0.1);
+		padding: 32px;
+	}
+	&__image{
+		max-width: 100%;
+		height: auto;
+		padding-bottom: 16px;
+
+	}
+	&__par{
+		padding-bottom: 16px;
+	}
+	&__author{
+		padding-bottom: 16px;
+		color: $gray-dark;
+	}
+	&__title-2{
+		text-align: center;
+		padding-bottom: 32px;
+	}
+	&__title-3{
+		padding-bottom: 16px;
+	}
+	&__body{
+		display: flex;
+		justify-content: space-around;
+	}
+	&__all{
+		max-width: 520px;
+		text-align: center;
+		padding: 32px;
+		position: relative;
+		span{
+			color: $purple;
+		}
+	}
+	&__link{
+		position: absolute;
+		right: 10px;
+		top: 5%;
+	}
+	&__item{
+		padding: 32px;
+		text-align: left;
+	}
+}
+
+@media (max-width: 970px) {
+	.post{
+		&__body{
+			flex-direction: column;
+			align-items: center
+		}
+		&__container{
+			
+		}
+		&__featured{
+			max-width: 100%;
+			padding: 24px;
+			align-items: center;
+			display: flex;
+			flex-direction: column;
+		}
+		&__par{
+			padding: 24px 45px;
+		}
+	}
+}
+
+// ABOUT =======================================================>
+.about{
+	&__title{
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 20px;
+		letter-spacing: 3px;
+		text-transform: uppercase;
+		color: $black;
+		padding-bottom: 36px;
+	}
+	&__h2{
+		padding-bottom: 16px;
+	}
+	&__par{
+		padding-bottom: 16px;
+	}
+	&__container{
+		background-color: $lavender;
+		display: flex;
+		padding: 100px;
+		justify-content: space-between;
+		transition: all 3s ease;
+	}
+	&__about-us{
+		max-width: 45%;
+	}
+	&__our-mision{
+		max-width: 45%;
+	}
+}
+@media (max-width: 670px) {
+	.about{
+		&__container{
+			flex-direction: column;
+			align-items: center
+		}
+		&__about-us{
+			max-width: 100%;
+		}
+		&__our-mision{
+			max-width: 100%;
+		}
+	}
+}
+
+// WHY WE STARTED =========================================================>
+.why-started{
+	&__container{
+		position: relative;
+	}
+	&__image{
+		object-fit: contain;
+		width: 100%;
+		&-container{
+			width: 100%;
+		}
+	}
+	&__text{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		padding: 80px;
+		max-width: 700px;
+		background-color: #fff;
+	}
+	&__title{
+		padding-bottom: 24px;
+	}
+	&__h1{
+		padding-bottom: 16px;
+	}
+	&__par{
+		padding-bottom: 36px;
+	}
+}
+@media (max-width: 738px) {
+	.why-started{
+		&__image-container{
+			display: none
+		}
+		&__image{
+			display: none;
+		}
+		&__text{
+			position: initial;
+		}
 	}
 }
